@@ -27,14 +27,7 @@ def register_url(request):
     form = UrlForm(request.POST)
     token = " "
     if request.method == "POST":
-        print("POST")
         if form.is_valid():
-            print("VALID")
-            print(request)
-            print(dir(request))
-            print(request.user)
-            print(dir(request.user))
-
             new_url = form.cleaned_data
             token = short().issue_token()
             new_url["short_url"] = token
@@ -42,7 +35,6 @@ def register_url(request):
             URL.objects.create(**new_url)
             return render(request, "url/success.html", {"token": token})
     else:
-        print("ELSE")
         form = UrlForm()
         token = " Invalid Url"
         return render(request, "url/register_url.html", {"form": form, "token": token})
