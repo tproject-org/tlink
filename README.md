@@ -110,6 +110,8 @@ Go to your Tlink instance and log in. After that, you can create short url. If y
 
 See the [open issues](https://github.com/tproject-org/tlink/issues) for a list of proposed features (and known issues).
 
+- [ ] Update web interface and update visual ui.
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
