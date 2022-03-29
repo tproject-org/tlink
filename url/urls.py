@@ -6,6 +6,9 @@ from .views import URLViewSet
 router = routers.DefaultRouter()
 router.register(r'url', URLViewSet)
 
+from . import views
+
 urlpatterns = [
     path('api/', include(router.urls)),
+    path("u/<str:slugs>", views.url_redirect, name="redirect")
 ]
