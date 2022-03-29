@@ -1,1 +1,12 @@
 {% extends 'base.html' %}
+
+{% block body %}
+<div> 
+    <form method="post"> {% csrf_token %}
+     {{ form.as_p }}
+     <button type="submit" name="button">Submit</button> 
+    </form>
+  
+    <h4>Shortened Url is: {{ request.get_host }}/{{ token }}</h4> 
+</div> 
+{% endblock body %}
