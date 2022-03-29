@@ -10,5 +10,6 @@ from . import views
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path("u/<str:slugs>", views.url_redirect, name="redirect")
+    path("u/<str:slugs>", views.url_redirect, name="redirect"),
+    path("", views.register_url, name="register_url")
 ]
