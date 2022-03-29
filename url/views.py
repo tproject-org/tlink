@@ -6,7 +6,7 @@ from rest_framework import viewsets
 
 from .models import URL
 from .serializers import URLSerializer
-
+from .shorten import short
 # ViewSets define the view behavior.
 class URLViewSet(viewsets.ModelViewSet):
     queryset = URL.objects.all()
@@ -31,4 +31,4 @@ def register_url(request):
   else:
       form = UrlForm() 
       token = " Invalid Url" 
-      return render(request, 'home.html', {'form': form, 'token': token})
+      return render(request, 'url/base.html', {'form': form, 'token': token})
