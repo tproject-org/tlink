@@ -6,5 +6,5 @@ from .models import URL
 class URLSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = URL
-        fields = ('url', 'short_url', 'owner')
+        fields = '__all__'
 
