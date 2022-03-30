@@ -30,7 +30,11 @@ def register_url(request):
         if form.is_valid():
             new_url = form.cleaned_data
             token = short().issue_token()
-            new_url["short_url"] = token
+            if new_url["short_url"] == "":
+                print("no short url")
+                new_url["short_url"] = token
+            else:
+                token = new_url["short_url"]
             new_url["owner"] = request.user
             URL.objects.create(**new_url)
             return render(request, "url/success.html", {"token": token})
