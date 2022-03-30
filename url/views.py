@@ -28,16 +28,30 @@ def register_url(request):
     token = " "
     if request.method == "POST":
         if form.is_valid():
+            print("FORM IS VALID ?")
             new_url = form.cleaned_data
             token = short().issue_token()
             if new_url["short_url"] == "":
+                print("EMPTY")
                 print("no short url")
                 new_url["short_url"] = token
             else:
+                print("SLUG IS HERE")
                 token = new_url["short_url"]
+            if URL.objects.filter(short_url=token).exists():
+                print("ALREADY EXIST")
+                message = "Slug already exist"
+                token = short().issue_token()
+                new_url["short_url"] = token
+                success = False
+            else:
+                print("SUCCESS")
+                success = True
+                message = "Url registered"
+            print("RETURN")
             new_url["owner"] = request.user
             URL.objects.create(**new_url)
-            return render(request, "url/success.html", {"token": token})
+            return render(request, "url/success.html", {"token": token, "success": success, "message": message})
     else:
         form = UrlForm()
         token = " Invalid Url"
