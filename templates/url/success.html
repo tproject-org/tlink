@@ -5,14 +5,52 @@
     {% if success %}
     <div class="alert alert-success" role="alert">
         {{ message }}
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                
+                <strong class="me-auto">TLink</strong>
+                <small>{{message}}</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Generated <a href="http://{{request.get_host }}/u/{{ token }}">{{ request.get_host }}/u/{{ token }}</a>
+              </div>
+            </div>
+          </div>
     </div>    
     {% else %}
     <div class="alert alert-warning" role="alert">
         {{ message }}
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                
+                <strong class="me-auto">TLink</strong>
+                <small>{{message}}</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Generated <a href="http://{{request.get_host }}/u/{{ token }}">{{ request.get_host }}/u/{{ token }}</a>
+              </div>
+            </div>
+          </div>
     </div> 
     {% endif %}
 
-    <h1> Go to <a href="http://{{request.get_host }}/u/{{ token }}">{{ request.get_host }}/u/{{ token }}</a></h1>
+    <h1>Success 👍</h1>
+
+    <h2> Go to <a href="http://{{request.get_host }}/u/{{ token }}">{{ request.get_host }}/u/{{ token }}</a> or copy this link: </h2>
+    <input type="text" value="http://{{request.get_host }}/u/{{ token }}" class="form-control">
+
+
+    
+    <script>
+        var toastLive = document.getElementById('liveToast')
+        var toast = new bootstrap.Toast(toastLive)
+
+        toast.show()
+    </script>
 
 </div>
 {% endblock body %}
