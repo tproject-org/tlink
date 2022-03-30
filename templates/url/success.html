@@ -1,5 +1,9 @@
 {% extends 'url/base.html' %}
 
 {% block body %}
-<h1> Go to {{ request.get_host }}/u/{{ token }}</h1>
+<div class="pt-2 py-5 mx-auto p-5 container-fluid"> 
+
+<h1> Go to <a href="http://{{request.get_host }}/u/{{ token }}">{{ request.get_host }}/u/{{ token }}</a></h1>
+
+</div>
 {% endblock body %}
