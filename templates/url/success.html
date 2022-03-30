@@ -2,8 +2,17 @@
 
 {% block body %}
 <div class="pt-2 py-5 mx-auto p-5 container-fluid"> 
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>    
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+        {{ message }}
+    </div> 
+    {% endif %}
 
-<h1> Go to <a href="http://{{request.get_host }}/u/{{ token }}">{{ request.get_host }}/u/{{ token }}</a></h1>
+    <h1> Go to <a href="http://{{request.get_host }}/u/{{ token }}">{{ request.get_host }}/u/{{ token }}</a></h1>
 
 </div>
 {% endblock body %}
